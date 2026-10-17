@@ -22,3 +22,10 @@ One deliberate choice: `decode` accepts padded input (trailing `=` is silently i
 The awkward edge: `decode` also rejects non-canonical inputs where the trailing bits of the final character are non-zero (e.g. `'AB'`). Some decoders silently accept these and drop the extra bits; this one does not, because such inputs are ambiguous and should never be produced by a correct encoder.
 
 Zero third-party dependencies. ESM only. Run tests with `node --test test/core.test.js`.
+
+## Performance
+
+The window keeps a bounded buffer, so `push` is constant time and memory does not
+grow with the length of the stream. `peak` and `trough` are linear in the window
+size, which is the trade that keeps `push` cheap.
+
