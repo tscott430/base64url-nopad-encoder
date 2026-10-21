@@ -1,6 +1,6 @@
 {
   "name": "base64url-nopad-encoder",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Base64url encoding and decoding for byte sequences without padding",
   "type": "module",
   "main": "src/index.js",
